@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Úvodní stránka</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Úvodní stránka{% endblock %}
+
+{% block content %}
+    {% include "header.html" %}
     <h1>Tahle stránka zobrazuje informace o zvířatech.</h1>
     <ul>
         {% for zvire in zvirata.keys %}
@@ -27,5 +24,4 @@
         {% endcomment %}
         <!-- HTML komentář, další tajné heslo: klokan -->
     </ul>
-</body>
-</html>
+{% endblock %}  
