@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Úvodní stránka</title>
+</head>
+<body>
+    <h1>Tahle stránka zobrazuje informace o zvířatech.</h1>
+    <ul>
+        {% for zvire in zvirata.keys %}
+            <li><a href="{% url 'zvire_info' zvire %}">{{ zvire|upper }}</a></li>
+        {% endfor %}
+
+        
+        {% if zvirata.keys|length > 7 %}
+            <p>Máme hodně zvířat</p>
+        {% elif zvirata.keys|length >= 5 %}    
+            <p>Máme tak akorát zvířat.</p>
+        {% else %}
+            <p>Máme málo zvířat.</p>
+        {% endif %}
+        {# tajné heslo: orangutan #}
+        {% comment %}
+        Víceřádkový komentář, může obsahovat cokoliv.
+        {% endcomment %}
+        <!-- HTML komentář, další tajné heslo: klokan -->
+    </ul>
+</body>
+</html>

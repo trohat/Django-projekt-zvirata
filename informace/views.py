@@ -1,3 +1,4 @@
+from django.http.response import Http404
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 
@@ -7,18 +8,24 @@ zvirata = {
     "krtek" : "krtek žije pod zemí",
     "hroch" : "hroch má hroší kůži",
     "krokodyl" : "krokodýl má hodně zubů",
-    "slon" : "slon má kly - už nic jiného než slovník není",
-    "zirafa": "žirafa má dlouhý krk"
+    "slon" : "slon má dlouhý chobot",
+    "zirafa": "žirafa má dlouhý krk",
+    "pes" : "pes je nejkrásnější zvíře na světě"
 }
 
 def index(request):
-    return HttpResponse("moje první stránka v Djangu")
+    return render(request, "informace/index.html", {
+        "zvirata": zvirata
+    })
 
 def info_o_zvireti(request, zvire):
     try:
         cislo = list(zvirata.keys()).index(zvire) + 1
-        response = f"<h1>Informace: {zvirata[zvire]}</h1><h2>a má číslo {cislo} </h2>"
-        return HttpResponse(response)
+        return render(request, "informace/info.html", {
+            "zvire_v_sablone": zvire,
+            "informace": zvirata[zvire],
+            "cislo": cislo
+        })
     except:
         return HttpResponseNotFound(f"Zvíře {zvire} nebylo nalezeno.")
 
