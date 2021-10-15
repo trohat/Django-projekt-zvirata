@@ -8,12 +8,15 @@ Informace o zvířeti
     <h1>Tohle jsou informace o zvířeti</h1>
     {% include "./includes/header.html" %}
     <p>
-        Dnes tu máme zvíře jménem {{ zvire_v_sablone }}.
+        Dnes tu máme zvíře jménem {{ jmeno }}.
     </p>
     <p>
-        {{ informace | capfirst }}.
+        Kolik váží? {{ vaha }}.
     </p>
     <p>
-        Zvíře má číslo {{ cislo }}.
+        Má barvu {{ barva }}.
+    </p>
+    <p>
+        Žije? {{ zije| yesno:"Jasně,Bohužel ne,Nevíme"}}. jede to z yesno filtru
     </p>
 {% endblock %}  

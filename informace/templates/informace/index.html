@@ -12,14 +12,14 @@
     {% include "informace/includes/header.html" %}
     <h1>Tahle stránka zobrazuje informace o zvířatech.</h1>
     <ul>
-        {% for zvire in zvirata.keys %}
-            <li><a href="{% url 'zvire_info' zvire %}">{{ zvire|upper }}</a></li>
+        {% for zvire in zvirata %}
+            <li><a href="{% url "zvire_info" zvire.jmeno %}">{{ zvire.jmeno }}</a> = {{ zvire }}</li>
         {% endfor %}
 
-        
-        {% if zvirata.keys|length > 7 %}
+        {# DTL = Django template language  #}
+        {% if zvirata|length > 7 %}
             <p>Máme hodně zvířat</p>
-        {% elif zvirata.keys|length >= 5 %}    
+        {% elif zvirata|length >= 5 %}
             <p>Máme tak akorát zvířat.</p>
         {% else %}
             <p>Máme málo zvířat.</p>
