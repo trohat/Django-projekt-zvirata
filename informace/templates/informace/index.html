@@ -1,9 +1,15 @@
 {% extends "base.html" %}
+{% load static %}
+
 
 {% block title %}Úvodní stránka{% endblock %}
 
+{% block styling %}
+    <link rel="stylesheet" href="{% static "informace/styly.css" %}">
+{% endblock %}
+
 {% block content %}
-    {% include "header.html" %}
+    {% include "informace/includes/header.html" %}
     <h1>Tahle stránka zobrazuje informace o zvířatech.</h1>
     <ul>
         {% for zvire in zvirata.keys %}
