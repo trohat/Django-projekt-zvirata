@@ -7,7 +7,7 @@ Formulář pro nové zvíře
 {% block content %}
 <form action="" method="POST">
     {% csrf_token %}
-    {% for policko in formular %}
+    {% for policko in form %}
      
         <div class="label">
             {{ policko.label_tag }}

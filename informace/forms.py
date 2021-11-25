@@ -15,7 +15,7 @@ from .models import Zvire
 class ZvireForm(forms.ModelForm):
     class Meta:
         model = Zvire
-        fields = ["jmeno"]
+        fields = "__all__"
         labels = {
             "jmeno": "Jmeno zvířete",
             "vaha": "Kolik vážíš?"
