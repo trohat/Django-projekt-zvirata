@@ -31,12 +31,12 @@ def nove_zvire(request):
         formular = ZvireForm(request.POST)
         if formular.is_valid():
             #zde dochází ke zpracování dat
-            zvire = Zvire(jmeno=formular.cleaned_data["jmeno"],
-                        vaha=formular.cleaned_data["vaha"] + 10,
-                        barva=formular.cleaned_data["barva"],
-                        zije=formular.cleaned_data["zije"]
-                            )
-            zvire.save()
+            # zvire = Zvire(jmeno=formular.cleaned_data["jmeno"],
+            #             vaha=formular.cleaned_data["vaha"] + 10,
+            #             barva=formular.cleaned_data["barva"],
+            #             zije=formular.cleaned_data["zije"]
+            #                 )
+            formular.save()
             return HttpResponseRedirect("dekuji")
         
     else:
