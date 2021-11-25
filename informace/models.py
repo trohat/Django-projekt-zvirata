@@ -10,8 +10,11 @@ class Zvire(models.Model):
     barva = models.CharField(max_length=20, default="")
     zije = models.BooleanField(null=True)
 
+    class Meta:
+        verbose_name_plural = "Zvirata"
+
     def __str__(self):
-        return f"{self.jmeno} ({self.vaha}) {self.barva} výpis pomocí __str__"
+        return f"{self.jmeno} ({self.vaha}) {self.barva}"
 
 
 #MVC = model / view / controller

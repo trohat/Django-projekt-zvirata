@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseNotFound, Http404
-
+from django.http import HttpResponseNotFound, Http404, HttpResponseRedirect
+from django.urls import reverse
 
 from .models import Zvire
+from .forms import ZvireForm
 
 # Create your views here.
 
@@ -24,6 +25,28 @@ def info_o_zvireti(request, jmeno):
         "barva" : zvire.barva[:-1] + "ou",
         "zije": zvire.zije
     })
+
+def nove_zvire(request):
+    if request.method == "POST":
+        formular = ZvireForm(request.POST)
+        if formular.is_valid():
+            #zde dochází ke zpracování dat
+            zvire = Zvire(jmeno=formular.cleaned_data["jmeno"],
+                        vaha=formular.cleaned_data["vaha"] + 10,
+                        barva=formular.cleaned_data["barva"],
+                        zije=formular.cleaned_data["zije"]
+                            )
+            zvire.save()
+            return HttpResponseRedirect("dekuji")
+        
+    else:
+        formular = ZvireForm()
+    return render(request, "informace/nove.html", {
+        "formular": formular
+    })
+
+def dekuji(request):
+    return render(request, "informace/dekuji.html")
 
 
 #view funkce

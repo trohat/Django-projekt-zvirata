@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+Formulář pro nové zvíře
+{% endblock %}
+
+{% block content %}
+<form action="" method="POST">
+    {% csrf_token %}
+    {% for policko in formular %}
+     
+        <div class="label">
+            {{ policko.label_tag }}
+        </div>
+        <div class="pole">
+            {{ policko }}
+        </div>
+        <div class="chyby">
+            {{ policko.errors }}
+        </div>
+       
+    {% endfor %}
+    <button>Odešli</button>
+</form>
+{% endblock %}
